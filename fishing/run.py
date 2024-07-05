@@ -50,8 +50,10 @@ def show_inv():
 
 # this allows a player to sell a fish
 def sell_fish():
+
     print("Sell your fish:")
     show_inv()
+    
     sell_selection = input("Which fish to sell?")
     if sell_selection in player1.inventory:
 
