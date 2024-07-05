@@ -1,9 +1,11 @@
 import fish
 import player
 
-player1 = player.Player(0)
+# player created with 0 balance and empty list
 
+player1 = player.Player()
 
+# creation of different types of fish with rarity and value
 cod = fish.Fish("Cod", 10, fish.rarity("common", "Cod"))
 mackerel = fish.Fish("Mackerel", 10, fish.rarity("common", "Mackerel"))
 flounder = fish.Fish("Flounder", 10, fish.rarity("common", "Flounder"))
@@ -18,6 +20,7 @@ tuna = fish.Fish("Tuna", 500, fish.rarity("rare", "Tuna"))
 fishWoman = fish.Fish("Fish Woman", 5000, fish.rarity("unique", "Fish Woman"))
 mermaid = fish.Fish("Mermaid", 15000, fish.rarity("mythic", "Mermaid"))
 
+# adding fish to a dictionary
 fish.addFish(cod)
 fish.addFish(mackerel)
 fish.addFish(flounder)
@@ -32,10 +35,9 @@ fish.addFish(tuna)
 fish.addFish(fishWoman)
 fish.addFish(mermaid)
 
-result = fish.fishList.get(fish.lootTable())
-
 run = True
 
+# this function shows inventory of a player
 def show_inv():
         counts = {}
         for x in player1.inventory:
@@ -46,6 +48,7 @@ def show_inv():
             print(f"{key} x{value} (", (fish.fishList.get(key).value * value), "gold )")
         print("")    
 
+# this allows a player to sell a fish
 def sell_fish():
     print("Sell your fish:")
     show_inv()
@@ -60,9 +63,8 @@ def sell_fish():
         print("")
 
 
-
+# main game
 while run:
-
     selection = input("Would you like to fish??(y/n)")
     match selection:
         case "y":
@@ -76,7 +78,6 @@ while run:
         case "inv":
             print("Your Inventory:")
             show_inv()
-            print("")
 
         case "bal":
             print("Your balance:")
@@ -85,6 +86,7 @@ while run:
 
         case "sell":
             sell_fish()
+            
         case _:
             print(selection, "is not a selection.")
             print("")
