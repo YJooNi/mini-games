@@ -33,15 +33,16 @@ def addFish(fish):
     fishList.update({fish.name: fish})
 
 def lootTable():
-    max = 2500
-    number = random.randint(1, max)
-    if number <= 1375:
+    number = random.random()*100
+    
+
+    if number <= 65:
         return random.choice(common)
-    elif number <= 1875:
+    elif number <= 85:
         return random.choice(uncommon)
-    elif number <= 2250:
+    elif number <= 94:
         return random.choice(rare)
-    elif number <= 2425:
+    elif number <= 99.4:
         return random.choice(unique)
-    elif number > 2425 and number <= 2500:
+    elif number > 99.4:
         return random.choice(mythic)

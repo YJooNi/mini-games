@@ -16,9 +16,10 @@ redMullet = fish.Fish("Red Mullet", 10, fish.rarity("common", "Red Mullet"))
 pigfish = fish.Fish("Pigfish", 10, fish.rarity("common", "Pigfish"))
 grouper = fish.Fish("Grouper", 10, fish.rarity("common", "Grouper"))
 goldfish = fish.Fish("Goldfish", 100, fish.rarity("uncommon", "Goldfish"))
-tuna = fish.Fish("Tuna", 500, fish.rarity("rare", "Tuna"))
-fishWoman = fish.Fish("Fish Woman", 5000, fish.rarity("unique", "Fish Woman"))
-mermaid = fish.Fish("Mermaid", 15000, fish.rarity("mythic", "Mermaid"))
+tuna = fish.Fish("Tuna", 250, fish.rarity("rare", "Tuna"))
+fishWoman = fish.Fish("Fish Woman", 1000, fish.rarity("unique", "Fish Woman"))
+fishMan = fish.Fish("Fish Man", 1000, fish.rarity("unique", "Fish Man"))
+mermaid = fish.Fish("Mermaid", 25000, fish.rarity("mythic", "Mermaid"))
 
 # adding fish to a dictionary
 fish.addFish(cod)
@@ -33,6 +34,7 @@ fish.addFish(grouper)
 fish.addFish(goldfish)
 fish.addFish(tuna)
 fish.addFish(fishWoman)
+fish.addFish(fishMan)
 fish.addFish(mermaid)
 
 run = True
