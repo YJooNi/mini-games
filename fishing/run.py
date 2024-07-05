@@ -1,5 +1,7 @@
 import fish
 import player
+import time
+import random
 
 # player created with 0 balance and empty list
 
@@ -41,12 +43,24 @@ run = True
 
 # catches fish
 def catch_fish():
-    result = fish.fishList.get(fish.lootTable())
-    print("You caught a", result.name + "!", "It's value is", result.value, "gold.")
-    player.addInventory(result.name, player1)
-    print("The", result.name, "went into your inventory.")
+
+    # adds a delay to fishing
+    print("Throwing a fishing line", end=" ", flush=True)
+    for x in range(random.randint(3,7)):
+            print(".", end=" ", flush=True)
+            time.sleep(0.7)
     print("")
 
+    number = random.random()
+    if number <= .75:
+        result = fish.fishList.get(fish.lootTable())
+        print("You caught a", result.name + "!", "It's value is", result.value, "gold.")
+        player.addInventory(result.name, player1)
+        print("The", result.name, "went into your inventory.")
+        print("")
+    else:
+        print("Did not get a bite...")
+        print("")
 
 # this function shows inventory of a player
 def show_inv():

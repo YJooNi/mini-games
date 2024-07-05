@@ -34,13 +34,12 @@ def addFish(fish):
 
 def lootTable():
     number = random.random()*100
-    
 
-    if number <= 65:
+    if number <= 65.5:
         return random.choice(common)
-    elif number <= 85:
+    elif number <= 85.5:
         return random.choice(uncommon)
-    elif number <= 94:
+    elif number <= 94.5:
         return random.choice(rare)
     elif number <= 99.4:
         return random.choice(unique)
