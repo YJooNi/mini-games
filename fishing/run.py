@@ -37,6 +37,15 @@ fish.addFish(mermaid)
 
 run = True
 
+# catches fish
+def catch_fish():
+    result = fish.fishList.get(fish.lootTable())
+    print("You caught a", result.name + "!", "It's value is", result.value, "gold.")
+    player.addInventory(result.name, player1)
+    print("The", result.name, "went into your inventory.")
+    print("")
+
+
 # this function shows inventory of a player
 def show_inv():
         
@@ -111,11 +120,7 @@ while run:
 
         case "y":
 
-            result = fish.fishList.get(fish.lootTable())
-            print("You caught a", result.name + "!", "It's value is", result.value, "gold.")
-            player.addInventory(result.name, player1)
-            print("The", result.name, "went into your inventory.")
-            print("")
+            catch_fish()
 
         case "n":
 
@@ -137,6 +142,6 @@ while run:
             sell_fish()
 
         case _:
-            
+
             print(selection, "is not a selection.")
             print("")
