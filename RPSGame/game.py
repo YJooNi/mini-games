@@ -5,6 +5,15 @@ import menu
 
 set = ["rock", "paper", "scissors"]
 
+def icon(choice):
+    match choice:
+        case "rock":
+            return "🪨"
+        case "scissors":
+            return "✂️"
+        case "paper":
+            return "📄"
+
 # object for players
 
 class Player:
@@ -25,7 +34,7 @@ def display_cards(player, ai):
 
     print("AI's hand:")
     for card in ai.cards:
-        print(card, end=" ")
+        print("[Hidden]", end=" ")
     menu.nextLine()
 
     menu.nextLine()
@@ -39,16 +48,16 @@ def display_cards(player, ai):
 
 def ai_win(ai):
     menu.nextLine()
-    print("AI wins!", "AI gets 1 point!")
+    print("AI wins!", "AI gets 1 point 🎖 !")
     ai.points += 1
 
 def player_win(player):
     menu.nextLine()
-    print("You win!", "You get 1 point!")
+    print("You win!", "You get 1 point 🎖 !")
     player.points += 1
     
 def tie():
-    print("Round ends in a tie. No points given!")
+    print("Round ends in a tie. No point given!")
 
 #   #   #   #   #
 def result(player, ai):
@@ -72,11 +81,11 @@ def round(player, ai, choice):
 
     menu.nextLine()
     player.cards.remove(choice)
-    print("You have played", choice)
+    print("You have played", choice, icon(choice))
 
     ai_choice = random.choice(ai.cards)
     ai.cards.remove(ai_choice)
-    print("AI has played", ai_choice)
+    print("AI has played", ai_choice, icon(ai_choice))
 
     match choice:
         #   #   #   #   #
