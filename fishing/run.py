@@ -54,9 +54,26 @@ def sell_fish():
     show_inv()
     sell_selection = input("Which fish to sell?")
     if sell_selection in player1.inventory:
-        player1.inventory.remove(sell_selection)
-        player1.balance += fish.fishList.get(sell_selection).value
-        print("You sold a", sell_selection, "for", fish.fishList.get(sell_selection).value, "gold")
+
+        counts = {}
+        for x in player1.inventory:
+            if x not in counts:
+                counts[x] = 0
+            counts[x] +=1
+        if counts.get(sell_selection) > 1:
+            print("Selling", sell_selection, "( Max:", counts.get(sell_selection), ")")
+            sell_count = input("How Many would you like to sell?")
+            if int(sell_count) <= counts.get(sell_selection) and int(sell_count) > 1:
+                for x in range(int(sell_count)):
+                    player1.inventory.remove(sell_selection)
+                player1.balance += (fish.fishList.get(sell_selection).value * int(sell_count))
+                print("You sold", "x" + sell_count, sell_selection, "for", (fish.fishList.get(sell_selection).value * int(sell_count)), "gold")
+            else:
+                print("You do not have " + sell_count + " amount")
+        else:
+            player1.inventory.remove(sell_selection)
+            player1.balance += fish.fishList.get(sell_selection).value
+            print("You sold a", sell_selection, "for", fish.fishList.get(sell_selection).value, "gold")
         print("")
     else:
         print(sell_selection, "is not a selection")
@@ -86,7 +103,7 @@ while run:
 
         case "sell":
             sell_fish()
-            
+
         case _:
             print(selection, "is not a selection.")
             print("")
