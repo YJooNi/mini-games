@@ -7,38 +7,6 @@ import random
 
 player1 = player.Player()
 
-# creation of different types of fish with rarity and value
-cod = fish.Fish("Cod", 10, fish.rarity("common", "Cod"))
-mackerel = fish.Fish("Mackerel", 10, fish.rarity("common", "Mackerel"))
-flounder = fish.Fish("Flounder", 10, fish.rarity("common", "Flounder"))
-salmon = fish.Fish("Salmon", 10, fish.rarity("common", "Salmon"))
-seaBass = fish.Fish("Sea Bass", 10, fish.rarity("common", "Sea Bass"))
-halibut = fish.Fish("Halibut", 10, fish.rarity("common", "Halibut"))
-redMullet = fish.Fish("Red Mullet", 10, fish.rarity("common", "Red Mullet"))
-pigfish = fish.Fish("Pigfish", 10, fish.rarity("common", "Pigfish"))
-grouper = fish.Fish("Grouper", 10, fish.rarity("common", "Grouper"))
-goldfish = fish.Fish("Goldfish", 100, fish.rarity("uncommon", "Goldfish"))
-tuna = fish.Fish("Tuna", 250, fish.rarity("rare", "Tuna"))
-fishWoman = fish.Fish("Fish Woman", 1000, fish.rarity("unique", "Fish Woman"))
-fishMan = fish.Fish("Fish Man", 1000, fish.rarity("unique", "Fish Man"))
-mermaid = fish.Fish("Mermaid", 25000, fish.rarity("mythic", "Mermaid"))
-
-# adding fish to a dictionary
-fish.addFish(cod)
-fish.addFish(mackerel)
-fish.addFish(flounder)
-fish.addFish(salmon)
-fish.addFish(seaBass)
-fish.addFish(halibut)
-fish.addFish(redMullet)
-fish.addFish(pigfish)
-fish.addFish(grouper)
-fish.addFish(goldfish)
-fish.addFish(tuna)
-fish.addFish(fishWoman)
-fish.addFish(fishMan)
-fish.addFish(mermaid)
-
 run = True
 
 # catches fish
@@ -59,20 +27,25 @@ def catch_fish():
         print("The", result.name, "went into your inventory.")
         print("")
     else:
-        print("Did not get a bite...")
+        print("Line came back empty...")
         print("")
+
+# function for counting inventory
+def countFish(counts):
+
+    for x in player1.inventory:
+        if x not in counts:
+            counts[x] = 0
+        counts[x] +=1
+
+    return counts
 
 # this function shows inventory of a player
 def show_inv():
         
         counts = {}
 
-        for x in player1.inventory:
-
-            if x not in counts:
-                counts[x] = 0
-
-            counts[x] +=1
+        countFish(counts)
 
         for key, value in counts.items():
 
@@ -91,11 +64,7 @@ def sell_fish():
 
         counts = {}
 
-        for x in player1.inventory:
-
-            if x not in counts:
-                counts[x] = 0
-            counts[x] +=1
+        countFish(counts)
 
         if counts.get(sell_selection) > 1:
 
@@ -128,10 +97,14 @@ def sell_fish():
         print("")
 
 
+# shop to buy items
+def shop():
+    print("Welcome to the fish shop")
+
 # main game
 while run:
 
-    selection = input("Would you like to fish??(y/n)")
+    selection = input("Would you like to fish? ( y / n | inv / bal / sell / shop):")
     match selection:
 
         case "y":
@@ -156,6 +129,10 @@ while run:
         case "sell":
 
             sell_fish()
+
+        case "shop":
+
+            shop()
 
         case _:
 
