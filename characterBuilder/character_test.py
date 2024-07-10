@@ -27,7 +27,9 @@ while run:
     if "primary_weapon" in player.equipment is not None:
         for x in player.status:
            player.status[x] = player.status[x] + player.equipment.get("primary_weapon").stats[x]
-    
+    elif "primary_weapon" in player.equipment is None:
+        continue
+
     print("Your equipment:")
     print(player.equipment)
 

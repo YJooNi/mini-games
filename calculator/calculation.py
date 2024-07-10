@@ -51,24 +51,9 @@ def calc_function(selection):
         if result is not None:
             break
 
+list_calculation_menu = [{"option": "ADD", "func": calc_function}, {"option": "SUBTRACT", "func": calc_function}, {"option": "MULTIPLY", "func": calc_function}, {"option": "DIVIDE", "func": calc_function},  {"option": "GO BACK", "func": exit}]
 # ==================== calculation menu =======================
 
 def calculation_menu():
     while True:
-        menu.create_menu(menu.list_calculation_menu)
-        current_selection = input("Select an option:")
-        match current_selection:
-            case "1":
-                calc_function(current_selection)
-            case "2":
-                calc_function(current_selection)
-            case "3":
-                calc_function(current_selection)
-            case "4":
-                calc_function(current_selection)
-            case "5":
-                print("\nGoing Back!\n")
-                break
-            case _:
-                print(current_selection, "is not an option!")
-                break
+        menu.create_menu(list_calculation_menu)
